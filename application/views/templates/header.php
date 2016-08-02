@@ -1,7 +1,7 @@
 <html>
 <head>
     <title>
-        CodeIgniter练习
+        欢迎来到KCN的博客
     </title>
 </head>
 <body>
