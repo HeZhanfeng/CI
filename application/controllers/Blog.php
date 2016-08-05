@@ -52,38 +52,38 @@ class Blog extends CI_Controller {
 
     public function login()
     {
-        // $this->load->helper('form');
-        // $this->load->library('form_validation');
+        $this->load->helper('form');
+        $this->load->library('form_validation');
 
-        // $data['title'] = '登录';
-        // $this->form_validation->set_rules('username', 'username', 'required');
-        // $this->form_validation->set_rules('password', 'password', 'required');
+        $data['title'] = '登录';
+        $this->form_validation->set_rules('username', 'username', 'required');
+        $this->form_validation->set_rules('password', 'password', 'required');
 
-        // if ($this->form_validation->run() === FALSE)
-        // {
+        if ($this->form_validation->run() === FALSE)
+        {
             
-        //     $this->load->view('blog/login');
+            $this->load->view('blog/login');
             
 
-        // }
-        // else 
-        // {
-        //     $res = $this->blog_model->login_info(
-        //             $this->input->post('username'),
-        //             $this->input->post('password')
-        //         );
+        }
+        else 
+        {
+            $info = $this->blog_model->login_info(
+                    $this->input->post('username'),
+                    $this->input->post('password')
+                );
 
-        //     if($res !==FALSE){
-        //         print_r($res);
-        //         $this->session->userdata('username',$this->input->post('username'));
-        //         $this->load->view('blog/view');
-        //     }
-        //     else{
-        //         echo "您的输入有误！";
-        //     }
-        // }
-        $this->output->enable_profiler(TRUE);
-        var_dump($this->blog_model->login_info("贺占峰", "123456"));
+            if($info !==FALSE){
+                print_r($info);
+                $this->session->userdata('username',$this->input->post('username'));
+                $this->load->view('blog/view');
+            }
+            else{
+                echo "您的输入有误！";
+            }
+        }
+        // $this->output->enable_profiler(TRUE);//调试用的
+        // var_dump($this->blog_model->login_info("贺占峰", "123456"));
  
 
     }
