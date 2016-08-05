@@ -21,9 +21,9 @@ class Blog extends CI_Controller {
     public function get()
     {
         $data['blog'] = $this->blog_model->get_blog();
-        $data['title'] = '欢迎来到KCN的博客';
+        // $data['title'] = '欢迎来到KCN的博客';
 
-        $this->load->view('templates/header', $data);
+        $this->load->view('templates/header');
         $this->load->view('blog/index', $data);
         $this->load->view('templates/footer');
     }
@@ -48,6 +48,29 @@ class Blog extends CI_Controller {
         $this->load->view('blog/view', $data);
         $this->load->view('templates/footer');
 
+    }
+
+    public function login()
+    {
+        $this->load->helper('form');
+        $this->load->library('form_validation');
+
+        $data['title'] = '登录';
+        $this->form_validation->set_rules('username', 'username', 'required');
+        $this->form_validation->set_rules('password', 'password', 'required');
+
+        if ($this->form_validation->run() === FALSE)
+        {
+            $this->load->view('templates/header', $data);
+            $this->load->view('blog/login');
+            $this->load->view('templates/footer');
+
+        }
+        else 
+        {
+            $this->blog_model->login();
+            $this->load->view('blog/success');
+        }
     }
 
     public function create()

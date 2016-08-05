@@ -23,19 +23,37 @@ class Blog_model extends CI_Model {
     //发表博客
     public function set_blog()
     {
+        //$sql="insert into blog (time) values(now())";
+
+         $sql="select now()";
+
         $this->load->helper('url');
 
         //$writer = url_title($this->input->post('writer'),'dash',true);//将字符串中的所有空格替换成连接符（-），并将所有字符转换为小写。
 
-
+        
         $data = array(
             'title'=>$this->input->post('title'),//post()过数据进行过滤，防止恶意攻击。
             'text'=>$this->input->post('text'),
-            'writer'=>$this->input->post('writer')
-            
+            'writer'=>$this->input->post('writer'),
+            'time'=>$sql
         );
+
         //插入到数据库
-        return $this->db->insert('bolg',$data);
+        return $this->db->insert('blog',$data);
+    }
+
+    public function login()
+    {
+        $this->load->helper('url');
+
+        $data = array(
+            'username'=>$this->input->post('username'),//post()过数据进行过滤，防止恶意攻击。
+            'password'=>$this->input->post('password')
+        );
+
+        //插入到数据库
+        return $this->db->insert('blog_info',$data);
     }
 
 }
