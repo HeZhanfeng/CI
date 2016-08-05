@@ -25,7 +25,7 @@ class Blog_model extends CI_Model {
     {
         //$sql="insert into blog (time) values(now())";
 
-         $sql="select now()";
+        $sql="select now()";
 
         $this->load->helper('url');
 
@@ -43,19 +43,35 @@ class Blog_model extends CI_Model {
         return $this->db->insert('blog',$data);
     }
 
-    public function login()
+    // public function login()
+    // {
+    //     $this->load->helper('url');
+
+    //     $data = array(
+    //         'username'=>$this->input->post('username'),//post()过数据进行过滤，防止恶意攻击。
+    //         'password'=>$this->input->post('password')
+    //     );
+
+    //     //插入到数据库
+    //     return $this->db->select('blog_info',$data);
+    // }
+
+    public function login_info($username,$password)
     {
-        $this->load->helper('url');
+        $info = $this->db
+                ->where('username',$username)
+                ->where('password',$password)
+                ->limit(1)->get('blog_info');
 
-        $data = array(
-            'username'=>$this->input->post('username'),//post()过数据进行过滤，防止恶意攻击。
-            'password'=>$this->input->post('password')
-        );
+        if($info->num_rows>0){
+            return $info->row();
+        }
+        else{
+            return FALSE;
+        }
+        
 
-        //插入到数据库
-        return $this->db->insert('blog_info',$data);
     }
-
 }
 
 /* End of file Blog_model.php */

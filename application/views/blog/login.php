@@ -8,8 +8,8 @@
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>欢迎来到KCN的博客</title>
-    <link href="http://apps.bdimg.com/libs/bootstrap/3.3.4/css/bootstrap.css" rel="stylesheet">
+    <title>登录</title>
+   <link href="http://apps.bdimg.com/libs/bootstrap/3.3.4/css/bootstrap.css" rel="stylesheet">
     <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="http://apps.bdimg.com/libs/bootstrap/3.3.4/js/bootstrap.min.js"></script>
     <style type="text/css">
@@ -85,24 +85,25 @@
   <body>
 
     <div class="container">
+        <div class="blog-post form-signin">
+          
+            <?php echo validation_errors(); ?>
 
-      <form class="form-signin">
-        <?php echo validation_errors(); ?>
+            <?php echo form_open('blog/login'); ?>
 
-        <?php echo form_open('blog/login'); ?>
-
-        <h2 class="form-signin-heading">请登录</h2>
-        <label for="username" class="sr-only">user</label>
-        <input type="input" id="inputEmail" class="form-control" name="username" placeholder="用户名" required autofocus>
-        <label for="password" class="sr-only">密码</label>
-        <input type="password" id="inputPassword" class="form-control" name="password" placeholder="密码" required>
-        <div class="checkbox">
-          <label>
-            <input type="checkbox" value="remember-me"> 记住密码？
-          </label>
+            <h2 class="form-signin-heading">请登录</h2>
+            <label for="username" class="sr-only">user</label>
+            <input type="input" id="inputEmail" class="form-control" name="username" placeholder="用户名" required autofocus>
+            <label for="password" class="sr-only">密码</label>
+            <input type="password" id="inputPassword" class="form-control" name="password" placeholder="密码" required>
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" value="remember-me"> 记住密码？
+              </label>
+            </div>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">登 录</button>
+          </form>
         </div>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">登 录</button>
-      </form>
     </div>    
 
     <footer class="blog-footer">

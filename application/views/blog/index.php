@@ -186,7 +186,7 @@
   </head>
 
   <body>
-
+  
     <div class="blog-masthead">
       <div class="container">
         <nav class="blog-nav">
@@ -211,6 +211,7 @@
         <div class="col-sm-8 blog-main">
 
           <div class="blog-post">
+           
             <?php foreach ($blog as $blog_item): ?>
 
             <h3><?php echo $blog_item['title']; ?></h3>
